@@ -11,6 +11,11 @@ Add links to other dictionary sites on word page.
 
 ![Screenshot](https://lh6.googleusercontent.com/-ejFzSNcmAkA/U-C2vePGCmI/AAAAAAAASdo/tAClm2AAS9s/w800-h500-no/after_small.png)
 
+
+# Usage
+
+Click anywhere on the page to show the extra buttons.
+
 # Development
 
 Test to be done after every change:
