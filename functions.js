@@ -6,13 +6,15 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
  */
 
 (function() {
-  var DEBUG, DOMModificationHandler, container, mangle, sites;
+  var DEBUG, DOMModificationHandler, container, hasMangled, mangle, outerContainer, sites;
 
   DEBUG = true;
 
   DEBUG = false;
 
   container = "div.wordPage";
+
+  outerContainer = "#dictionaryContent";
 
   sites = [
     {
@@ -42,13 +44,15 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
     }
   ];
 
+  hasMangled = false;
+
   mangle = function() {
-    var link, links, mydiv, mydiv_content, site, site_tools, word, _i, _len, _results;
+    var link, links, mydiv, mydiv_content, site, site_tools, word, _i, _len;
     word = $.trim($("" + container + " h1").text());
     site_tools = "" + container + " div.tools";
     mydiv_content = '<div class="ext-link"></div>';
     mydiv = "" + container + " div.ext-link";
-    ($(mydiv)).remove();
+    $(mydiv).remove();
     links = (function() {
       var _i, _len, _results;
       _results = [];
@@ -59,30 +63,27 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
       return _results;
     })();
     if (DEBUG) {
-      console.log("word: " + word);
-      console.log(links);
+      console.log("word: " + word, links);
     }
     ($(site_tools)).after(mydiv_content);
-    _results = [];
     for (_i = 0, _len = links.length; _i < _len; _i++) {
       link = links[_i];
-      _results.push(($(mydiv)).append(link));
+      ($(mydiv)).append(link);
     }
-    return _results;
+    return hasMangled = true;
   };
 
-  DOMModificationHandler = function() {
+  DOMModificationHandler = function(e) {
+    if (hasMangled) {
+      return $(this).unbind("DOMSubtreeModified");
+    }
     $(this).unbind("DOMSubtreeModified");
     return setTimeout((function() {
       mangle();
-      return $(container).bind("DOMSubtreeModified", DOMModificationHandler);
-    }), 4000);
+      return $(outerContainer).bind("DOMSubtreeModified", DOMModificationHandler);
+    }), 1000);
   };
 
-  $(container).bind("DOMSubtreeModified", DOMModificationHandler);
-
-  $(document).click(mangle);
+  $(outerContainer).bind("DOMSubtreeModified", DOMModificationHandler);
 
 }).call(this);
-
-//# sourceMappingURL=functions.map

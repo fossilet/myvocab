@@ -7,6 +7,8 @@ DEBUG = true
 DEBUG = false
 
 container = "div.wordPage"
+outerContainer = "#dictionaryContent"
+
 
 sites = [
   {
@@ -41,32 +43,35 @@ sites = [
   },
 ]
 
-mangle = () ->
+hasMangled = false
+
+mangle = ->
   word = $.trim $("#{ container } h1").text()
   site_tools = "#{ container } div.tools"
   mydiv_content = '<div class="ext-link"></div>'
   mydiv = "#{ container } div.ext-link"
 
   # First remove added div then add it.
-  ($ mydiv).remove()
+  $(mydiv).remove()
   links = ("<a target='_blank' class='ext-link tbutton #{ site["class"]}' href='#{ site["link"] }#{ word }'>#{ site["name"] }</a>" for site in sites)
 
   if DEBUG
-    console.log "word: #{ word }"
-    console.log links
+    console.log "word: #{ word }", links
 
   ($ site_tools).after mydiv_content
   (($ mydiv).append link) for link in links
 
-DOMModificationHandler = ->
+  hasMangled = true
+
+
+DOMModificationHandler = (e) ->
+  return $(this).unbind("DOMSubtreeModified") if hasMangled
+
   # http://stackoverflow.com/q/11084819
   $(this).unbind "DOMSubtreeModified"
   setTimeout (->
     mangle()
-    $(container).bind "DOMSubtreeModified", DOMModificationHandler
-  ), 4000
-$(container).bind "DOMSubtreeModified", DOMModificationHandler
+    $(outerContainer).bind "DOMSubtreeModified", DOMModificationHandler
+  ), 1000
 
-# This is for mangling the page after the page content is changed by ajax requests.
-# dbclick does not work.
-$(document).click mangle
+$(outerContainer).bind "DOMSubtreeModified", DOMModificationHandler
