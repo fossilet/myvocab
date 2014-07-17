@@ -25,6 +25,16 @@ sites = [
     'class': 'etymology'
   },
   {
+    'name': 'Google Define',
+    'link': 'https://www.google.com/search?q=define%3A+',
+    'class': 'googledefine'
+  },
+  {
+    'name': 'Google Search',
+    'link': 'https://www.google.com/search?q=',
+    'class': 'googlesearch'
+  },
+  {
     'name': 'Google Images',
     'link': 'https://www.google.com/search?tbm=isch&q='
     'class': 'googleimages'
