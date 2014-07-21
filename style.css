@@ -1,5 +1,6 @@
 a.ext-link {
   background-size: 14px 14px;
+  background-color: #fff;
 }
 a.dictionarycom {
   background-image: url("chrome-extension://__MSG_@@extension_id__/dictionary.ico");
@@ -18,4 +19,43 @@ a.googledefine {
 }
 a.googleimages {
   background-image: url("chrome-extension://__MSG_@@extension_id__/google.ico");
+}
+a.mw {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/mw.ico");
+}
+a.tfd {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/tfd.ico");
+}
+ul.menu {
+  font-size: 13px;
+  color: #666;
+  padding: 2px;
+  display: inline;
+  list-style: none;
+}
+ul li.menu {
+  line-height: 20px;
+  display: inline-block;
+  position: relative;
+}
+ul li ul {
+  width: 145px;
+  z-index: 5;
+}
+ul li ul.submenu {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  padding: 0px;
+}
+ul li ul.submenu .tbutton {
+  float: none;
+}
+ul li ul li.submenu {
+  list-style: none;
+  display: block;
+}
+ul li:hover ul.submenu {
+  display: block;
+  visibility: visible;
 }

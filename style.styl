@@ -2,6 +2,7 @@
 
 a.ext-link
   background-size 14px 14px
+  background-color white  // Same with the site background
 
 a.dictionarycom
   background-image: url('chrome-extension://__MSG_@@extension_id__/dictionary.ico');
@@ -15,3 +16,40 @@ a.googledefine
   background-image: url('chrome-extension://__MSG_@@extension_id__/google.ico');
 a.googleimages
   background-image: url('chrome-extension://__MSG_@@extension_id__/google.ico');
+a.mw
+  background-image: url('chrome-extension://__MSG_@@extension_id__/mw.ico');
+a.tfd
+  background-image: url('chrome-extension://__MSG_@@extension_id__/tfd.ico');
+
+// Menu stolen from: http://cssdeck.com/labs/another-simple-css3-dropdown-menu
+ul
+  &.menu
+    font-size 13px
+    color #666  // Same with the site text color
+    padding 2px
+    display inline
+    list-style none
+  li
+    &.menu
+      line-height 20px  // Align "more" with buttons.
+      display inline-block
+      position relative
+    ul
+      width: 145px
+      z-index: 5  // Menu in the front.
+      &.submenu
+        display none
+        visibility hidden
+        position absolute
+        padding 0px
+        .tbutton
+          float: none // For one button per line.
+      li
+        &.submenu
+          list-style none
+          display block
+    &:hover
+      ul
+        &.submenu
+          display block
+          visibility: visible

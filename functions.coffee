@@ -24,6 +24,24 @@ sites = [
     'link': 'http://etymonline.com/index.php?search=',
     'class': 'etymology'
   },
+]
+
+extra_sites = [
+  {
+    'name': 'Google Images',
+    'link': 'https://www.google.com/search?tbm=isch&q='
+    'class': 'googleimages'
+  },
+  {
+    'name': 'Merriam-Webster',
+    'link': 'http://www.merriam-webster.com/dictionary/',
+    'class': 'mw'
+  },
+  {
+    'name': 'The Free Dictionary',
+    'link': 'http://www.thefreedictionary.com/',
+    'class': 'tfd'
+  },
   {
     'name': 'Google Define',
     'link': 'https://www.google.com/search?q=define%3A+',
@@ -33,12 +51,7 @@ sites = [
     'name': 'Google Search',
     'link': 'https://www.google.com/search?q=',
     'class': 'googlesearch'
-  },
-  {
-    'name': 'Google Images',
-    'link': 'https://www.google.com/search?tbm=isch&q='
-    'class': 'googleimages'
-  },
+  }
 ]
 
 mangle = () ->
@@ -50,6 +63,7 @@ mangle = () ->
   # First remove added div then add it.
   ($ mydiv).remove()
   links = ("<a target='_blank' class='ext-link tbutton #{ site["class"]}' href='#{ site["link"] }#{ word }'>#{ site["name"] }</a>" for site in sites)
+  extra_links = ("<li class='submenu'><a target='_blank' class='ext-link tbutton #{ site["class"]}' href='#{ site["link"] }#{ word }'>#{ site["name"] }</a></li>" for site in extra_sites)
 
   if DEBUG
     console.log "word: #{ word }"
@@ -57,6 +71,19 @@ mangle = () ->
 
   ($ site_tools).after mydiv_content
   (($ mydiv).append link) for link in links
+
+  menu = """
+<ul class="menu">
+  <li class="menu">
+    More
+    <ul class="submenu">
+    </ul>
+  </li>
+</ul>
+"""
+
+  ($ mydiv).append menu
+  ($("#{ mydiv } ul li ul").append link) for link in extra_links
 
 DOMModificationHandler = ->
   # http://stackoverflow.com/q/11084819
