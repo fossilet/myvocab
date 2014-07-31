@@ -47,6 +47,9 @@ ul li ul.submenu {
   visibility: hidden;
   position: absolute;
   padding: 0px;
+  background-color: #fff;
+  border: 1px solid rgba(100,100,100,0.4);
+  border-radius: 3px !important;
 }
 ul li ul.submenu .tbutton {
   float: none;
@@ -54,6 +57,9 @@ ul li ul.submenu .tbutton {
 ul li ul li.submenu {
   list-style: none;
   display: block;
+}
+ul li ul li a {
+  margin: 6px 3px 6px 3px !important;
 }
 ul li:hover ul.submenu {
   display: block;

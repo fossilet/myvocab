@@ -47,11 +47,6 @@ extra_sites = [
     'link': 'https://www.google.com/search?q=define%3A+',
     'class': 'googledefine'
   },
-  {
-    'name': 'Google Search',
-    'link': 'https://www.google.com/search?q=',
-    'class': 'googlesearch'
-  }
 ]
 
 mangle = () ->
