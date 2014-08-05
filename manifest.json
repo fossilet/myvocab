@@ -4,7 +4,7 @@
     "name": "MyVocab",
     "short_name": "Powerful vocabulary.com",
     "description": "MyVocab adds more features to vocabulary.com.",
-    "version": "0.2.0",
+    "version": "0.1.2",
     "icons": {
         "16": "vocabulary.ico",
         "48": "vocabulary48.png",
