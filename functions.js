@@ -24,9 +24,9 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
       'link': 'http://dict.youdao.com/search?q=',
       'class': 'youdao'
     }, {
-      'name': 'Etymology',
+      'name': 'Etymonline',
       'link': 'http://etymonline.com/index.php?search=',
-      'class': 'etymology'
+      'class': 'etymonline'
     }
   ];
 
@@ -34,7 +34,7 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
     {
       'name': 'Google Images',
       'link': 'https://www.google.com/search?tbm=isch&q=',
-      'class': 'googleimages'
+      'class': 'google'
     }, {
       'name': 'Merriam-Webster',
       'link': 'http://www.merriam-webster.com/dictionary/',
@@ -46,50 +46,43 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
     }, {
       'name': 'Google Define',
       'link': 'https://www.google.com/search?q=define%3A+',
-      'class': 'googledefine'
+      'class': 'google'
     }
   ];
 
   mangle = function() {
-    var bgimage, extra_links, link, links, menu, mydiv, mydiv_content, site, site_tools, word, _i, _j, _len, _len1, _results;
+    var bgimage, extra_links, link, links, menu, mydiv, mydiv_content, site, site_tools, word, _i, _j, _k, _l, _len, _len1, _len2, _len3, _results;
     word = $.trim($("" + container + " h1").text());
     site_tools = "" + container + " div.tools";
     mydiv_content = '<div class="ext-link"></div>';
     mydiv = "" + container + " div.ext-link";
     ($(mydiv)).remove();
-    bgimage = "url('chrome-extension://__MSG_@@extension_id__/etymonline.png')";
-    links = (function() {
-      var _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = sites.length; _i < _len; _i++) {
-        site = sites[_i];
-        _results.push("<a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + " style='background-image: " + bgimage + "' </a>");
-      }
-      return _results;
-    })();
-    extra_links = (function() {
-      var _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = extra_sites.length; _i < _len; _i++) {
-        site = extra_sites[_i];
-        _results.push("<li class='submenu'> <a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + " </a> </li>");
-      }
-      return _results;
-    })();
+    links = [];
+    for (_i = 0, _len = sites.length; _i < _len; _i++) {
+      site = sites[_i];
+      bgimage = "url(&#39;" + chrome.extension.getURL(("img/" + site['class'] + ".png") + "&#39;)");
+      links.push("<a target='_blank' class='ext-link tbutton " + site["class"] + "' style='background-image: " + bgimage + "' href='" + site["link"] + word + "'>" + site["name"] + "</a>");
+    }
+    extra_links = [];
+    for (_j = 0, _len1 = extra_sites.length; _j < _len1; _j++) {
+      site = extra_sites[_j];
+      bgimage = "url(&#39;" + chrome.extension.getURL(("img/" + site['class'] + ".png") + "&#39;)");
+      extra_links.push("<li class='submenu'> <a target='_blank' class='ext-link tbutton " + site["class"] + "' style='background-image: " + bgimage + "' href='" + site["link"] + word + "'>" + site["name"] + "</a></li>");
+    }
     if (DEBUG) {
       console.log("word: " + word);
       console.log(links);
     }
     ($(site_tools)).after(mydiv_content);
-    for (_i = 0, _len = links.length; _i < _len; _i++) {
-      link = links[_i];
+    for (_k = 0, _len2 = links.length; _k < _len2; _k++) {
+      link = links[_k];
       ($(mydiv)).append(link);
     }
     menu = "<ul class=\"menu\">\n  <li class=\"menu\">\n    More\n    <ul class=\"submenu\">\n    </ul>\n  </li>\n</ul>";
     ($(mydiv)).append(menu);
     _results = [];
-    for (_j = 0, _len1 = extra_links.length; _j < _len1; _j++) {
-      link = extra_links[_j];
+    for (_l = 0, _len3 = extra_links.length; _l < _len3; _l++) {
+      link = extra_links[_l];
       _results.push($("" + mydiv + " ul li ul").append(link));
     }
     return _results;

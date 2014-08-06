@@ -6,9 +6,9 @@
     "description": "MyVocab adds more features to vocabulary.com.",
     "version": "0.1.2",
     "icons": {
-        "16": "vocabulary.ico",
-        "48": "vocabulary48.png",
-        "128": "vocabulary128.png"
+        "16": "img/vocabulary.png",
+        "48": "img/vocabulary48.png",
+        "128": "img/vocabulary128.png"
     },
 
     "content_scripts": [
@@ -25,7 +25,6 @@
     ],
     "web_accessible_resources": [
         "functions.map",
-        "etymonline.png", "dictionary.ico", "youdao.ico", "google.ico",
-        "mw.ico", "tfd.ico"
+        "img/*.png"
     ]
 }

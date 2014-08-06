@@ -20,9 +20,9 @@ sites = [
     'class': 'youdao'
   },
   {
-    'name': 'Etymology',
+    'name': 'Etymonline',
     'link': 'http://etymonline.com/index.php?search=',
-    'class': 'etymology'
+    'class': 'etymonline'
   },
 ]
 
@@ -30,7 +30,7 @@ extra_sites = [
   {
     'name': 'Google Images',
     'link': 'https://www.google.com/search?tbm=isch&q='
-    'class': 'googleimages'
+    'class': 'google'
   },
   {
     'name': 'Merriam-Webster',
@@ -45,7 +45,7 @@ extra_sites = [
   {
     'name': 'Google Define',
     'link': 'https://www.google.com/search?q=define%3A+',
-    'class': 'googledefine'
+    'class': 'google'
   },
 ]
 
@@ -57,20 +57,24 @@ mangle = () ->
 
   # First remove added div then add it.
   ($ mydiv).remove()
-  bgimage = "url('chrome-extension://__MSG_@@extension_id__/etymonline.png')"
-  links = ("
-    <a target='_blank'
-    class='ext-link tbutton #{ site["class"]}'
-    href='#{ site["link"] }#{ word }'>#{ site["name"] }
-    style='background-image: #{ bgimage }'
-    </a>" for site in sites)
-  extra_links = ("
-    <li class='submenu'>
+  links = []
+  for site in sites
+    # http://stackoverflow.com/a/3963210/547578
+    bgimage = "url(&#39;" + chrome.extension.getURL "img/#{ site['class'] }.png" + "&#39;)"
+    links.push "
       <a target='_blank'
-      class='ext-link tbutton #{ site["class"]}'
-      href='#{ site["link"] }#{ word }'>#{ site["name"] }
-      </a>
-    </li>" for site in extra_sites)
+      class='ext-link tbutton #{ site["class"] }'
+      style='background-image: #{ bgimage }'
+      href='#{ site["link"] }#{ word }'>#{ site["name"] }</a>"
+  extra_links = []
+  for site in extra_sites
+    bgimage = "url(&#39;" + chrome.extension.getURL "img/#{ site['class'] }.png" + "&#39;)"
+    extra_links.push "
+      <li class='submenu'>
+        <a target='_blank'
+        class='ext-link tbutton #{ site["class"] }'
+        style='background-image: #{ bgimage }'
+        href='#{ site["link"] }#{ word }'>#{ site["name"] }</a></li>"
 
   if DEBUG
     console.log "word: #{ word }"
