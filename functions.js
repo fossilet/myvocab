@@ -51,18 +51,19 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
   ];
 
   mangle = function() {
-    var extra_links, link, links, menu, mydiv, mydiv_content, site, site_tools, word, _i, _j, _len, _len1, _results;
+    var bgimage, extra_links, link, links, menu, mydiv, mydiv_content, site, site_tools, word, _i, _j, _len, _len1, _results;
     word = $.trim($("" + container + " h1").text());
     site_tools = "" + container + " div.tools";
     mydiv_content = '<div class="ext-link"></div>';
     mydiv = "" + container + " div.ext-link";
     ($(mydiv)).remove();
+    bgimage = "url('chrome-extension://__MSG_@@extension_id__/etymonline.png')";
     links = (function() {
       var _i, _len, _results;
       _results = [];
       for (_i = 0, _len = sites.length; _i < _len; _i++) {
         site = sites[_i];
-        _results.push("<a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + " </a>");
+        _results.push("<a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + " style='background-image: " + bgimage + "' </a>");
       }
       return _results;
     })();

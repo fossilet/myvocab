@@ -57,10 +57,12 @@ mangle = () ->
 
   # First remove added div then add it.
   ($ mydiv).remove()
+  bgimage = "url('chrome-extension://__MSG_@@extension_id__/etymonline.png')"
   links = ("
     <a target='_blank'
     class='ext-link tbutton #{ site["class"]}'
     href='#{ site["link"] }#{ word }'>#{ site["name"] }
+    style='background-image: #{ bgimage }'
     </a>" for site in sites)
   extra_links = ("
     <li class='submenu'>

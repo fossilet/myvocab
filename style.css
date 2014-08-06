@@ -2,30 +2,6 @@ a.ext-link {
   background-size: 14px 14px;
   background-color: #fff;
 }
-a.dictionarycom {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/dictionary.ico");
-}
-a.youdao {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/youdao.ico");
-}
-a.etymology {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/etymonline.png");
-}
-a.googlesearch {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/google.ico");
-}
-a.googledefine {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/google.ico");
-}
-a.googleimages {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/google.ico");
-}
-a.mw {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/mw.ico");
-}
-a.tfd {
-  background-image: url("chrome-extension://__MSG_@@extension_id__/tfd.ico");
-}
 ul.menu {
   font-size: 13px;
   color: #666;
