@@ -62,7 +62,7 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
       _results = [];
       for (_i = 0, _len = sites.length; _i < _len; _i++) {
         site = sites[_i];
-        _results.push("<a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + "</a>");
+        _results.push("<a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + " </a>");
       }
       return _results;
     })();
@@ -71,7 +71,7 @@ Created by tux, Sat Feb  8 23:48:59 CST 2014
       _results = [];
       for (_i = 0, _len = extra_sites.length; _i < _len; _i++) {
         site = extra_sites[_i];
-        _results.push("<li class='submenu'><a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + "</a></li>");
+        _results.push("<li class='submenu'> <a target='_blank' class='ext-link tbutton " + site["class"] + "' href='" + site["link"] + word + "'>" + site["name"] + " </a> </li>");
       }
       return _results;
     })();

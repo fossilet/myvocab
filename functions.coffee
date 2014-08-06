@@ -57,8 +57,18 @@ mangle = () ->
 
   # First remove added div then add it.
   ($ mydiv).remove()
-  links = ("<a target='_blank' class='ext-link tbutton #{ site["class"]}' href='#{ site["link"] }#{ word }'>#{ site["name"] }</a>" for site in sites)
-  extra_links = ("<li class='submenu'><a target='_blank' class='ext-link tbutton #{ site["class"]}' href='#{ site["link"] }#{ word }'>#{ site["name"] }</a></li>" for site in extra_sites)
+  links = ("
+    <a target='_blank'
+    class='ext-link tbutton #{ site["class"]}'
+    href='#{ site["link"] }#{ word }'>#{ site["name"] }
+    </a>" for site in sites)
+  extra_links = ("
+    <li class='submenu'>
+      <a target='_blank'
+      class='ext-link tbutton #{ site["class"]}'
+      href='#{ site["link"] }#{ word }'>#{ site["name"] }
+      </a>
+    </li>" for site in extra_sites)
 
   if DEBUG
     console.log "word: #{ word }"
@@ -89,6 +99,6 @@ DOMModificationHandler = ->
   ), 4000
 $(container).bind "DOMSubtreeModified", DOMModificationHandler
 
-# This is for mangling the page after the page content is changed by ajax requests.
-# dbclick does not work.
+# This is for mangling the page after the page content is changed by ajax
+# requests. dbclick does not work.
 $(document).click mangle
