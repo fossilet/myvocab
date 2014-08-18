@@ -24,6 +24,7 @@
         "activeTab"
     ],
     "web_accessible_resources": [
+        "functions.coffee",
         "functions.map",
         "img/*.png"
     ]
