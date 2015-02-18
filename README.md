@@ -7,10 +7,11 @@ MyVocab is a Chrome extension for [Vocabulary.com](http://www.vocabulary.com).
 
 # Features
 
-Add links to other dictionary sites on word page.
+* Add links to other dictionary sites on word page.
 
 ![Screenshot](https://lh6.googleusercontent.com/-ejFzSNcmAkA/U-C2vePGCmI/AAAAAAAASdo/tAClm2AAS9s/w800-h500-no/after_small.png)
 
+* Fix progress gauge display when the page is zoomed.
 
 # Usage
 
