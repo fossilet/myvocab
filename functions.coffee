@@ -83,6 +83,13 @@ mangle = () ->
   ($ site_tools).after mydiv_content
   (($ mydiv).append link) for link in links
 
+  # Fix progres display.
+  klass = "i.progress.icon.med"
+  offset = ($ klass).attr "data-prg";
+  ($ klass).css {
+      'background-position-x': offset + '%',
+    }
+
   menu = """
 <ul class="menu">
   <li class="menu">
