@@ -100,6 +100,15 @@ mangle = () ->
 </ul>
 """
 
+
+  # Reduce extra top margin of word header.
+  ($ 'div.wordPage.with-header-margin').css {
+      'margin-top': '0px'
+    }
+  ($ '#dictionaryContent h1').css {
+    'margin-top': '0px'
+  }
+
   ($ mydiv).append menu
   ($("#{ mydiv } ul li ul").append link) for link in extra_links
 
