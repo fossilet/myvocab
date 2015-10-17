@@ -1,7 +1,7 @@
 # Since Tue Aug  5 17:19:31 CST 2014
 
 zip:
-	zip -x Makefile -r myvocab.zip *
+	zip -r myvocab.zip * -x Makefile
 
 # Make screenshot for Chrome store
 shot:
