@@ -101,11 +101,12 @@ mangle = () ->
 """
 
 
-  # Reduce extra top margin of word header.
-  ($ 'div.wordPage.with-header-margin').css {
+  # Reduce extra top margin of word header only on challenge page.
+  ($ 'body.with-tab-challenge div.wordPage.with-header-margin').css {
       'margin-top': '0px'
     }
-  ($ '#dictionaryContent h1').css {
+  # Reduce extra top margin of word header on both challenge and dictionary.
+  ($ '#dictionaryContent h1.dynamictext').css {
     'margin-top': '0px'
   }
 
