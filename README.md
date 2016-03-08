@@ -1,3 +1,5 @@
+[![tip for next commit](http://prime4commit.com/projects/224.svg)](http://prime4commit.com/projects/224)
+
 # MyVocab
 
 MyVocab is a Chrome extension for [Vocabulary.com](http://www.vocabulary.com).
