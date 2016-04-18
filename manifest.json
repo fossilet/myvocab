@@ -4,7 +4,7 @@
     "name": "MyVocab",
     "short_name": "Powerful vocabulary.com",
     "description": "MyVocab adds more features to vocabulary.com.",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "icons": {
         "16": "img/vocabulary.png",
         "48": "img/vocabulary48.png",
@@ -13,14 +13,14 @@
 
     "content_scripts": [
         {
-            "matches": ["http://www.vocabulary.com/*"],
+            "matches": ["*://www.vocabulary.com/*"],
             "js": ["jquery-2.1.0.min.js", "functions.js"],
             "css": ["style.css"],
             "run_at": "document_end"
         }
     ],
     "permissions": [
-        "http://www.vocabulary.com/*",
+        "*://www.vocabulary.com/*",
         "activeTab"
     ],
     "web_accessible_resources": [
