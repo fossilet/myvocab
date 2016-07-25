@@ -1,6 +1,12 @@
+div.ext-link {
+  padding-left: 19px;
+}
 a.ext-link {
-  background-size: 14px 14px;
+  background-size: 13px 13px;
   background-color: #fff;
+  background-repeat: no-repeat;
+  padding: 0 1em 0 1em;
+  font-size: 13px;
 }
 ul.menu {
   font-size: 13px;
@@ -15,14 +21,14 @@ ul li.menu {
   position: relative;
 }
 ul li ul {
-  width: 145px;
+  width: 185px;
   z-index: 5;
 }
 ul li ul.submenu {
   display: none;
   visibility: hidden;
   position: absolute;
-  padding: 0px;
+  padding: 0;
   background-color: #fff;
   border: 1px solid rgba(100,100,100,0.4);
   border-radius: 3px !important;
